@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { ThemeType } from '../types';
+import { theme as mainTheme, Theme } from '../theme';
 
-type ContextType = Record<string, unknown>;
+type ContextType = {
+  themeType: ThemeType;
+  setThemeType: (themeType: ThemeType) => void;
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+};
 type Props = {
   children: React.ReactNode;
 };
 
 const AppContextProvider = ({ children }: Props): JSX.Element => {
-  const value = {};
+  const defaultThemeType: ThemeType = 'light';
+  const [themeType, setThemeType] = useState<ThemeType>(defaultThemeType);
+  const [theme, setTheme] = useState<Theme>(mainTheme[defaultThemeType]);
+
+  useEffect(() => {
+    setTheme(mainTheme[themeType]);
+  }, [themeType]);
+
+  const value = {
+    themeType,
+    setThemeType,
+    theme,
+    setTheme,
+  };
+
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
