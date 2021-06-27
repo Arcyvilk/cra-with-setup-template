@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
@@ -6,7 +7,7 @@ type Props = {
   justify?: boolean;
   align?: boolean;
   grow?: boolean;
-  style?: any;
+  style?: React.CSSProperties;
 };
 
 export const Flex = styled.div.attrs((props: Props) => {
@@ -31,6 +32,6 @@ export const Flex = styled.div.attrs((props: Props) => {
   display: flex;
 
   > * {
-    flex-grow: ${(props: Props ) => (props.grow ? 1 : 'unset')};
+    flex-grow: ${(props: Props) => (props.grow ? 1 : 'unset')};
   }
 `;

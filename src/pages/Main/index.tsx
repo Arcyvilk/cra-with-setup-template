@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { Flex } from '../../components';
+import { Theme } from '../../shared/theme';
+import { AppContext } from '../../shared/context';
 
-const MainWrapper = styled.div`
+const MainWrapper = styled.div.attrs(({ theme }: { theme: Theme }) => {
+  const style: React.CSSProperties = {
+    color: theme.primaryText,
+    backgroundColor: theme.primaryBg,
+  };
+  return { style };
+})<{ theme: Theme }>`
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -12,5 +21,21 @@ const MainWrapper = styled.div`
 `;
 
 export default function Main(): JSX.Element {
-  return <MainWrapper>(((o(*ﾟ▽ﾟ*)o)))</MainWrapper>;
+  const { theme, themeType, setThemeType } = useContext(AppContext);
+  const onChangeThemeClick = () => {
+    if (themeType === 'light') {
+      setThemeType('dark');
+    } else {
+      setThemeType('light');
+    }
+  };
+
+  return (
+    <MainWrapper theme={theme}>
+      <Flex column align justify>
+        <div>(((o(*ﾟ▽ﾟ*)o)))</div>
+        <button onClick={onChangeThemeClick}>Reverse theme</button>
+      </Flex>
+    </MainWrapper>
+  );
 }
