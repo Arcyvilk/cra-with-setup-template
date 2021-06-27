@@ -11,6 +11,6 @@ const MainWrapper = styled.div`
   align-items: center;
 `;
 
-export default function App(): JSX.Element {
+export default function Main(): JSX.Element {
   return <MainWrapper>(((o(*ﾟ▽ﾟ*)o)))</MainWrapper>;
 }
