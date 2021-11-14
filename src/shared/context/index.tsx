@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ThemeType } from '../types';
-import { theme as mainTheme, Theme } from '../theme';
+import { ThemeType } from 'shared/types';
+import { theme as mainTheme, Theme } from 'shared/theme';
 
 type ContextType = {
   themeType: ThemeType;

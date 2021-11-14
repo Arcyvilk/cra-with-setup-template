@@ -5,8 +5,8 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import Main from './Main';
-import NotFound from './NotFound';
+import Main from 'pages/Main';
+import NotFound from 'pages/NotFound';
 
 export default function App(): JSX.Element {
   return (

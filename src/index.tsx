@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppContextProvider from './shared/context';
-import App from './pages/App';
+import AppContextProvider from 'shared/context';
+import App from 'pages/App';
 
-import './index.css';
+import 'index.css';
 
 ReactDOM.render(
   <React.StrictMode>

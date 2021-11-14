@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { Flex } from '../../components';
-import { Theme } from '../../shared/theme';
-import { AppContext } from '../../shared/context';
+import { Flex } from 'components';
+import { Theme } from 'shared/theme';
+import { AppContext } from 'shared/context';
 
 const MainWrapper = styled.div.attrs(({ theme }: { theme: Theme }) => {
   const style: React.CSSProperties = {
