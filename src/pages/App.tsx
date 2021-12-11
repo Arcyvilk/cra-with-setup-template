@@ -12,7 +12,7 @@ export default function App(): JSX.Element {
   return (
     <Router>
       <Switch>
-        <Route exact path="/home">
+        <Route exact path="/">
           <Main />
         </Route>
         <Route exact path="/404">
