@@ -1,27 +1,16 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
-import Main from 'pages/Main';
-import NotFound from 'pages/NotFound';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-export default function App(): JSX.Element {
+import { Home } from 'pages/Home';
+import { NotFound } from 'pages/NotFound';
+
+export const App = (): JSX.Element => {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Main />
-        </Route>
-        <Route exact path="/404">
-          <NotFound />
-        </Route>
-        <Route>
-          <Redirect to="/404" />
-        </Route>
-      </Switch>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route element={'/404'} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};

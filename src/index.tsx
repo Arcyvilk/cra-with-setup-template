@@ -1,17 +1,42 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import AppContextProvider from 'shared/context';
-import { GlobalStyle } from 'shared/styles';
-import App from 'pages/App';
+import { createRoot } from 'react-dom/client';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
-import 'index.css';
+import { GlobalStyle } from 'styles/GlobalStyle';
+import AppContextProvider from 'context';
 
-ReactDOM.render(
-  <React.StrictMode>
+import { App } from 'pages/App';
+
+import './index.css';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true,
+      retry: false,
+      staleTime: 10 * 60 * 1000, // 10 minutes
+    },
+  },
+});
+
+const RootApp = () => {
+  return (
     <AppContextProvider>
+      <Root />
+    </AppContextProvider>
+  );
+};
+
+const Root = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       <GlobalStyle />
       <App />
-    </AppContextProvider>
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+    </QueryClientProvider>
+  );
+};
+
+const container = document.getElementById('root');
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const root = createRoot(container!); // createRoot(container!) if you use TypeScript
+root.render(<RootApp />);

@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+
+import { AppContext } from 'context';
 import { Flex } from 'components';
-import { Theme } from 'shared/theme';
-import { AppContext } from 'shared/context';
+import { Theme } from 'styles/theme';
 
 const MainWrapper = styled.div.attrs(({ theme }: { theme: Theme }) => {
   const style: React.CSSProperties = {
@@ -20,7 +21,7 @@ const MainWrapper = styled.div.attrs(({ theme }: { theme: Theme }) => {
   align-items: center;
 `;
 
-export default function Main(): JSX.Element {
+export const Home = (): JSX.Element => {
   const { theme, themeType, setThemeType } = useContext(AppContext);
   const onChangeThemeClick = () => {
     if (themeType === 'light') {
@@ -38,4 +39,4 @@ export default function Main(): JSX.Element {
       </Flex>
     </MainWrapper>
   );
-}
+};

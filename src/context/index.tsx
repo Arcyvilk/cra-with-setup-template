@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { ThemeType } from 'shared/types';
-import { theme as mainTheme, Theme } from 'shared/theme';
+import React, { useState, useEffect, useContext } from 'react';
+
+import { ThemeType } from 'types';
+import { theme as mainTheme, Theme } from 'styles/theme';
 
 type ContextType = {
   themeType: ThemeType;
@@ -33,3 +34,4 @@ const AppContextProvider = ({ children }: Props): JSX.Element => {
 
 export default AppContextProvider;
 export const AppContext = React.createContext({} as ContextType);
+export const useAppContext = (): ContextType => useContext(AppContext);
